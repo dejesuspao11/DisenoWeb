@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Parcial 02</title>
+    <style type="text/css"></style>
+
+    </style>
+    
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',
+                function (event){
+                    const form = document.getElementById("form01");
+                    form.addEventListener("submit", onFormSubmit);
+                });
+        function onFormSubmit(event) {
+            console.log("Click");
+            event.preventDefault(); /*Detiene el comportamiento natural */
+
+            const data = new FormData(event.target);
+
+            console.log("\tFORM array");
+            const dataObject = Object.fromEntries(data.entries());
+            console.log(dataObject);
+
+            console.log("\tFORM item");
+            data.forEach( (value, key) =>
+        {
+                console.log(`${key}: ${value}`);
+                console.log("key:" +key+" => "+value);
+        });
+
+                data.forEach((value, key) => {
+                console.Log(`${key}: ${value}`);
+            });
+
+            //mostrar info por elemento
+            console.log("\tFORM element")
+            const name = data.get("name");
+            const email = data.get("email");
+
+            console.log.(`Name: ${name}, Email: ${email}`);
+
+        }
+    </script>
+</head>
+<body>
+
+
+<form id="form01">
+    <input type = "text" name="name" placeholder="Ingresa nombre"/>
+    <input type = "email" name="email" placeholder="Ingresa email"/>
+    <button type="submit">Enviar</button>
+
+</form>
+
+</body>
+
+</html>
